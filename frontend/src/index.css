@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(34,211,238,0.08), transparent 60%),
+    radial-gradient(1000px 500px at -10% 110%, rgba(139,92,246,0.08), transparent 60%),
+    #0b0f1a;
+}
+
+/* subtle grid overlay for the 'ops center' feel */
+.ops-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.card {
+  @apply bg-bg-800/80 border border-white/5 rounded-2xl shadow-card backdrop-blur;
+}
+
+.kpi-label { @apply text-xs uppercase tracking-wider text-gray-400; }
+.kpi-value { @apply text-3xl font-semibold text-white; }
+.kpi-unit  { @apply text-sm text-gray-400 ml-1; }
+
+.pill {
+  @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+}
+.pill-green { @apply bg-accent-green/15 text-accent-green; }
+.pill-amber { @apply bg-accent-amber/15 text-accent-amber; }
+.pill-red   { @apply bg-accent-red/15   text-accent-red; }
+.pill-blue  { @apply bg-accent-blue/15  text-accent-blue; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #374151; }
