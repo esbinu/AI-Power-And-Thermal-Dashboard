@@ -1,11 +1,9 @@
-import { Bell, Settings, Cpu } from 'lucide-react'
-import { useState } from 'react'
+import { Bell, Settings, Cpu, User } from 'lucide-react'
 import clsx from 'clsx'
 
-const TABS = ['FLEET', 'THERMAL', 'GRID', 'ANALYTICS', 'LOGS']
+export const TABS = ['FLEET', 'THERMAL', 'GRID', 'ANALYTICS', 'LOGS']
 
-export default function Header({ health }) {
-  const [active, setActive] = useState('FLEET')
+export default function Header({ health, activeTab = 'FLEET', onTabChange }) {
   const live = health?.status === 'ok'
   return (
     <header className="flex items-center justify-between px-8 py-4 border-b border-white/5 bg-bg-900/70 backdrop-blur sticky top-0 z-20">
@@ -23,14 +21,14 @@ export default function Header({ health }) {
           {TABS.map((t) => (
             <button
               key={t}
-              onClick={() => setActive(t)}
+              onClick={() => onTabChange?.(t)}
               className={clsx(
                 'relative text-xs tracking-[0.2em] font-semibold transition-colors py-4',
-                active === t ? 'text-accent-cyan' : 'text-gray-400 hover:text-gray-200',
+                activeTab === t ? 'text-accent-cyan' : 'text-gray-400 hover:text-gray-200',
               )}
             >
               {t}
-              {active === t && (
+              {activeTab === t && (
                 <span className="absolute left-0 right-0 -bottom-px h-[2px] bg-accent-cyan rounded-full" />
               )}
             </button>
@@ -56,8 +54,8 @@ export default function Header({ health }) {
         </div>
         <button className="p-2 text-gray-400 hover:text-gray-100 transition" title="Alerts"><Bell className="w-4 h-4" /></button>
         <button className="p-2 text-gray-400 hover:text-gray-100 transition" title="Settings"><Settings className="w-4 h-4" /></button>
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center text-xs font-semibold text-white">
-          GK
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center text-white" title="Operator">
+          <User className="w-4 h-4" />
         </div>
       </div>
     </header>
