@@ -1,4 +1,4 @@
-AI Data-Center Monitoring Dashboard
+#AI Data-Center Monitoring Dashboard
 
 A pitch-ready demo dashboard for real-time AI-driven monitoring of server temperature, power draw, and workload — with anomaly detection, forecasting, and business-impact projection.
 
