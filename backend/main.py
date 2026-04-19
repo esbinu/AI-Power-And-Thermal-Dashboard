@@ -27,7 +27,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 from pathlib import Path
 
-from simulator import simulator, RACK_ZONES
+from file_reader import simulator, RACK_ZONES
 from anomaly import detector
 from forecast import forecast_bundle, forecast_metric
 from cost import savings_snapshot
